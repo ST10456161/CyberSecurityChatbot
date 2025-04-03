@@ -78,6 +78,47 @@ namespace CyberSecurityChatbot
             TypeText($"Hello, {name}! I'm here to help you stay safe online.\n");
             Thread.Sleep(1000); // Add a slight delay for effect
         }
+
+        // Method to respond to questions related to cybersecurity
+        private static void RespondToQuestions()
+        {
+            while (true)
+            {
+                TypeText("\nWhat would you like to learn about? (Type 'exit' to quit)\n");
+                string input = Console.ReadLine()?.Trim().ToLower();
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    TypeText("I didn't quite understand that. Could you rephrase?\n");
+                    continue;
+                }
+
+                switch (input)
+                {
+                    case "how are you":
+                        TypeText("I'm doing great, thank you for asking! How can I help you stay safe online?\n");
+                        break;
+                    case "purpose":
+                        TypeText("My purpose is to help educate people like you about cybersecurity best practices.\n");
+                        break;
+                    case "password safety":
+                        TypeText("Always use strong and unique passwords for each of your accounts. Consider using a password manager.\n");
+                        break;
+                    case "phishing":
+                        TypeText("Phishing emails often look like they come from trusted sources but ask for personal information. Always verify before clicking any links.\n");
+                        break;
+                    case "safe browsing":
+                        TypeText("Only visit trusted websites, avoid suspicious links, and make sure your browser is updated to avoid vulnerabilities.\n");
+                        break;
+                    case "exit":
+                        TypeText("Goodbye! Stay safe online!\n");
+                        return; // Exit method
+                    default:
+                        TypeText("I didn't quite understand that. Could you rephrase?\n");
+                        break;
+                }
+            }
+        }
         // Method to add a typing effect delay
         private static void TypeText(string text, int delay = 30)
         {
